@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AVSpeechSynthesizerExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,95 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFl-vX-o3d">
+                                <rect key="frame" x="225" y="370" width="68" height="30"/>
+                                <state key="normal" title="Speak"/>
+                                <connections>
+                                    <action selector="btnSpeakPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Zq-hW-7CI"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RFP-gW-VoP">
+                                <rect key="frame" x="225" y="285" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Vpr-8w-t27"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the Text to be translated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJa-Dj-VQg">
+                                <rect key="frame" x="186" y="187" width="232" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUA-wM-8Bq">
+                                <rect key="frame" x="263" y="323" width="90" height="30"/>
+                                <state key="normal" title="Language"/>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y9Y-qK-9Ic">
+                                <rect key="frame" x="0.0" y="419" width="600" height="189"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="189" id="7P6-EC-vKv"/>
+                                </constraints>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CjT-nu-EKD">
+                                <rect key="frame" x="326" y="370" width="49" height="30"/>
+                                <state key="normal" title="Stop"/>
+                                <connections>
+                                    <action selector="stopSpeech:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qNk-H3-CEJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUh-HG-0wh">
+                                <rect key="frame" x="413" y="370" width="42" height="30"/>
+                                <state key="normal" title="Pause"/>
+                                <connections>
+                                    <action selector="pauseSpeech:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a2u-vC-NtT"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YFl-vX-o3d" firstAttribute="top" secondItem="RFP-gW-VoP" secondAttribute="bottom" constant="55" id="1hA-8Z-ULy"/>
+                            <constraint firstItem="YFl-vX-o3d" firstAttribute="leading" secondItem="RFP-gW-VoP" secondAttribute="leading" id="1pF-vY-Whc"/>
+                            <constraint firstItem="CjT-nu-EKD" firstAttribute="trailing" secondItem="RFP-gW-VoP" secondAttribute="trailing" id="4lL-UX-duu"/>
+                            <constraint firstItem="nUA-wM-8Bq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="11" id="5L5-x8-kx0"/>
+                            <constraint firstItem="RFP-gW-VoP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6xY-MW-HXV"/>
+                            <constraint firstItem="RFP-gW-VoP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7B0-0j-caM"/>
+                            <constraint firstItem="Y9Y-qK-9Ic" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ARy-zQ-JTU"/>
+                            <constraint firstItem="CjT-nu-EKD" firstAttribute="bottom" secondItem="bUh-HG-0wh" secondAttribute="bottom" id="PqV-YU-g4b"/>
+                            <constraint firstItem="Y9Y-qK-9Ic" firstAttribute="centerX" secondItem="RFP-gW-VoP" secondAttribute="centerX" id="Rgp-bs-nR5"/>
+                            <constraint firstItem="nUA-wM-8Bq" firstAttribute="top" secondItem="RFP-gW-VoP" secondAttribute="bottom" constant="8" id="Uds-bV-6DE"/>
+                            <constraint firstItem="YFl-vX-o3d" firstAttribute="width" secondItem="CjT-nu-EKD" secondAttribute="width" constant="20" id="Yg6-jr-uwN"/>
+                            <constraint firstItem="RFP-gW-VoP" firstAttribute="top" secondItem="FJa-Dj-VQg" secondAttribute="bottom" constant="77" id="Ytr-mE-d2F"/>
+                            <constraint firstItem="bUh-HG-0wh" firstAttribute="leading" secondItem="CjT-nu-EKD" secondAttribute="trailing" constant="38" id="ZdK-QL-9dd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CjT-nu-EKD" secondAttribute="trailing" constant="205" id="Zn8-Fe-uIb"/>
+                            <constraint firstItem="YFl-vX-o3d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="2" id="gA7-QA-g6N"/>
+                            <constraint firstItem="CjT-nu-EKD" firstAttribute="top" secondItem="bUh-HG-0wh" secondAttribute="top" id="hkR-86-5Vo"/>
+                            <constraint firstItem="YFl-vX-o3d" firstAttribute="top" secondItem="nUA-wM-8Bq" secondAttribute="bottom" constant="17" id="hmR-4P-F0L"/>
+                            <constraint firstItem="CjT-nu-EKD" firstAttribute="baseline" secondItem="YFl-vX-o3d" secondAttribute="baseline" id="jLf-f3-I1n"/>
+                            <constraint firstItem="FJa-Dj-VQg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="2" id="lx8-Dg-UwZ"/>
+                            <constraint firstItem="YFl-vX-o3d" firstAttribute="top" secondItem="CjT-nu-EKD" secondAttribute="top" id="mJn-dW-2eh"/>
+                            <constraint firstItem="CjT-nu-EKD" firstAttribute="trailing" secondItem="RFP-gW-VoP" secondAttribute="trailing" id="oRA-hM-Ak3"/>
+                            <constraint firstItem="Y9Y-qK-9Ic" firstAttribute="top" secondItem="CjT-nu-EKD" secondAttribute="bottom" constant="19" id="p1V-4n-Vyw"/>
+                            <constraint firstItem="YFl-vX-o3d" firstAttribute="bottom" secondItem="CjT-nu-EKD" secondAttribute="bottom" id="w7b-uq-yjt"/>
+                            <constraint firstItem="CjT-nu-EKD" firstAttribute="trailing" secondItem="RFP-gW-VoP" secondAttribute="trailing" id="zoh-O2-lC1"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7B0-0j-caM"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="btnPause" destination="bUh-HG-0wh" id="HgX-QY-Qxy"/>
+                        <outlet property="btnSpeak" destination="YFl-vX-o3d" id="Jya-wg-ICb"/>
+                        <outlet property="btnStop" destination="CjT-nu-EKD" id="vRZ-eA-No6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="280" y="305"/>
         </scene>
     </scenes>
 </document>
